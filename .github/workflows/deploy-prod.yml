@@ -9,7 +9,7 @@ on:
 jobs:
   prod-deploy:
     environment: prod
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     container:
       image: kevinpsirius/pipeline_deployment_image:todolist_kotlin_backend
       env:
