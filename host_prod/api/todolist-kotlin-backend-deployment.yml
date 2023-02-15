@@ -36,5 +36,5 @@ spec:
       volumes:
         - name: back-end-build
           hostPath: 
-            path:  /home/ubuntu/drawapp-kubernetes-project/node_back/back_stock
+            path:  /home/ubuntu/todolist_kotlin_backend/
             type: Directory
