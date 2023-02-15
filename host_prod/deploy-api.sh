@@ -24,8 +24,8 @@ done
 echo "push new version to git"
 sudo git add .
 sudo git commit -m "deployment -- PROD --  version API : $timestamp"
-sudo git push git@github.com:kevP-Sirius/todolist_kotlin_backend.git main
-while [ "$(sudo microk8s kubectl get pods -l app=kotlin-back -n todolist-application | grep -w "api" | wc -l)" != "1" ]; do
+sudo git push
+while [ "$(sudo microk8s kubectl get pods -l app=kotlin-back -n todolist-application | grep -w "kotlin-back" | wc -l)" != "1" ]; do
    sleep 5
    echo "Waiting for new api deployment to be ready..."
 done
