@@ -54,7 +54,7 @@ app.post('/login',async (req, res) => {
 })
 app.post('/register',async (req, res) => {
   res.header("Access-Control-Allow-Origin", "*");
-  let moduleGenerator = require('./controller/login/index.js');
+  let moduleGenerator = require('./controller/register/index.js');
   await moduleGenerator.moduleRoute(req,res,ObjectId,db,moment,transporter,hashIt,axios,qs)
 })
 

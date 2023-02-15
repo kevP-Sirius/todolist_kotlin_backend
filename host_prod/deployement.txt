@@ -1,0 +1,9 @@
+kubectl create namespace todolist-application
+
+sudo microk8s kubectl apply -f todolist-kotlin-backend-deployment.yml
+sudo microk8s kubectl apply -f todolist-kotlin-backend-service.yml
+sudo microk8s kubectl apply -f todolist-kotlin-backend-ingress.yml
+
+
+sudo microk8s kubectl apply -f todolist-kotlin-mongodb-deployment.yml
+sudo microk8s kubectl apply -f todolist-kotlin-mongodb-service.yml
