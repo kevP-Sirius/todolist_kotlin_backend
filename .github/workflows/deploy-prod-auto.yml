@@ -1,0 +1,21 @@
+name: workflow autoupdate staging
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Deploy staging'
+        required: true
+        default: 'latest'
+jobs:
+  prod-deploy:
+    environment: prod
+    runs-on: ubuntu-latest
+    container:
+      image: kevinpsirius/pipeline_deployment_image:todolist_kotlin_backend
+      env:
+        sshKey: ${{ secrets.SSH_KEY }}
+    steps:
+      - name: Generate SSH connection to server with ansible for production
+        run: |
+          touch /var/www/html/mypckey.pem &&  chmod 600 /var/www/html/mypckey.pem && echo "$sshKey" >> /var/www/html/mypckey.pem
+          cd /var/www/html/playbook && ansible-playbook deploy-kotlin-todolist-backend.yml -e "ansible_ssh_timeout=180"

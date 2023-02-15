@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: backend-deployment
+  namespace: todolist-application
+  labels:
+    app: kotlin-backend
+spec:
+  selector:
+    matchLabels:
+      app: kotlin-back
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: kotlin-back
+    spec:
+      containers:
+      - name: kotlin-back
+        image: kevinpsirius/expressjs_ci_deployment:v1
+        securityContext:
+          privileged: true
+        volumeMounts:
+          - mountPath: /var/www/html
+            name: back-end-build
+        command: ["/bin/sh", "-c"]
+        args: ["npm i && pm2 start server.js && tail -f /dev/null"]
+        ports:
+        - name: http
+          containerPort: 9002
+        env:
+        - name: DEBIAN_FRONTEND
+          value: noninteractive
+        - name: version
+          value: my-version-1
+      volumes:
+        - name: back-end-build
+          hostPath: 
+            path:  /home/ubuntu/drawapp-kubernetes-project/node_back/back_stock
+            type: Directory

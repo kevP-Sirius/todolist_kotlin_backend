@@ -16,11 +16,8 @@ const axios = require('axios');
 const qs = require('qs');
 app.use(bodyParser.json());
 let dbUrl="mongodb://admin:eecbcdb9f950087b66a@localhost:27017/?authMechanism=DEFAULT"
-if(process.env.ENV=="dev"){
-  dbUrl="mongodb://admin:eecbcdb9f950087b66a@15.237.6.116:27017/?authMechanism=DEFAULT"
-}
 if(process.env.ENV=="prod"){
-  dbUrl="mongodb://admin:eecbcdb9f950087b66a@13.36.28.63:27017/?authMechanism=DEFAULT"
+  dbUrl="mongodb://admin:eecbcdb9f950087b66a@mongodb-service.todolist-application.svc.cluster.local:27017/?authMechanism=DEFAULT"
 }
 
 let hashIt = async(password)=>{
@@ -43,7 +40,7 @@ MongoClient.connect(dbUrl, function(err, client) {
   if (err) {
     throw err;
   }
-  db = client.db("expert_active");
+  db = client.db("todolist_kotlin");
 });
 app.listen(port, () => {
   console.log(`mode : ${process.env.ENV}`)

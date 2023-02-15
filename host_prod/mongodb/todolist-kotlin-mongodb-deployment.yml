@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployement
+  namespace: todolist-application
+  labels:
+    app: mongodb
+spec:
+  selector:
+    matchLabels:
+      app: mongodb
+  replicas: 1 # tells deployment to run 2 pods matching the template
+  template:
+    metadata:
+      labels:
+        app: mongodb
+    spec:
+      containers:
+      - name: mongodb
+        image: mongo
+        securityContext:
+          privileged: true
+        volumeMounts:
+          - name: mongodb-data
+            mountPath: /data/db
+        ports:
+        - name: mongodb-port
+          containerPort: 27017
+        # securityContext:
+        #   fsGroup: 999
+        env:
+          - name: MONGO_INITDB_ROOT_USERNAME
+            value: admin
+          - name: MONGO_INITDB_ROOT_PASSWORD
+            value: eecbcdb9f950087b66a
+          - name: version
+            value: "1.0"
+      volumes:
+        - name: mongodb-data
+          hostPath:
+            path: /home/ubuntu/todolist_kotlin_backend/mongodb-data
+            type: DirectoryOrCreate
+
