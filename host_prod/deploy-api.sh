@@ -2,7 +2,7 @@
 # sudo microk8s kubectl apply -f showtime-api-deployment.yaml;
 sudo git pull git@github.com:kevP-Sirius/todolist_kotlin_backend.git main
 #bin/bash
-file="todolist-kotlin-backend-deployment.yml"
+file="api/todolist-kotlin-backend-deployment.yml"
 oldstr=`grep  'my' $file | xargs`
 timestamp="$(date +"%Y-%m-%d-%H:%M:%S")"
 newstr="value: my-version-$timestamp"
