@@ -30,8 +30,8 @@ transporter = nodemailer.createTransport({
   port: 465,               // true for 465, false for other ports
   host: "email-smtp.eu-west-3.amazonaws.com",
       auth: {
-          user: 'AKIASZOYTYLKZDG4ZGDA',
-          pass: 'BMHySd2T1HirJBaL9sgvgtd46uKA72SCh/j1aIAApilk',
+          user: process.env.userAWS,
+          pass: process.env.passAWS,
           },
   secure: true,
   });
