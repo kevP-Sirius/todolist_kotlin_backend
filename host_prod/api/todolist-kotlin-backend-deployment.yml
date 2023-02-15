@@ -32,7 +32,7 @@ spec:
         - name: DEBIAN_FRONTEND
           value: noninteractive
         - name: version
-          value: my-version-1
+          value: my-version-2023-02-15-13:34:21
       volumes:
         - name: back-end-build
           hostPath: 
