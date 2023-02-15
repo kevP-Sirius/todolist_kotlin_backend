@@ -10,7 +10,7 @@ spec:
   tls:
   - hosts:
     - kotlintodolist.kpognon.eu
-    secretName: ingress-secret
+    secretName: ingress-secret-kotlin-todolist
   rules:
   - host: kotlintodolist.kpognon.eu
     http:
