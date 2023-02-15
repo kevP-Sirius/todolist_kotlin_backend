@@ -1,6 +1,6 @@
 # sudo microk8s kubectl delete -f showtime-api-deployment.yaml;
 # sudo microk8s kubectl apply -f showtime-api-deployment.yaml;
-sudo git pull
+git pull
 #bin/bash
 file="api/todolist-kotlin-backend-deployment.yml"
 oldstr=`grep  'my' $file | xargs`
