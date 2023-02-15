@@ -1,9 +1,9 @@
-name: workflow autoupdate staging
+name: workflow update production
 on:
   workflow_dispatch:
     inputs:
       version:
-        description: 'Deploy staging'
+        description: 'Deploy production version'
         required: true
         default: 'latest'
 jobs:
